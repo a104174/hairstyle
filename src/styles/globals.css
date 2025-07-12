@@ -2,18 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap");
 
 /* =====  BASE  ===== */
-
-body {
-  @apply font-sans text-gray-800 bg-background;
+@layer base {
+  body {
+    @apply font-sans text-gray-800 bg-background dark:text-gray-100 dark:bg-graydark;
+  }
 }
 
-.dark body {
-  @apply text-gray-100 bg-graydark;
+/* ---------------- COMPONENTES CUSTOM ---------------- */
+
+.nav-active {
+  @apply bg-accent/15 dark:bg-white/10;  
 }
 
+.home-btn {
+  @apply relative inline-flex items-center justify-center
+         px-4 py-1.5 rounded-md font-medium
+         transition-all duration-300
+         text-gray-700 dark:text-gray-200;          
+}
+
+.home-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  @apply rounded-md bg-gradient-to-br from-accent to-accent2
+         opacity-0 transition-opacity duration-300;
+}
+
+.home-btn:hover::before {
+  @apply opacity-100;
+}
+
+.home-btn:hover {
+  @apply text-white drop-shadow-md;
+}
+
+.home-btn.active {
+  @apply text-gray-900 dark:text-gray-100 font-semibold;
+}
+
+.home-btn.active::before {
+  @apply opacity-0;
+}
+
+/* classes utilitárias para o hero */
+.branding-heading {
+  @apply text-5xl md:text-7xl font-bold tracking-tiny animate-fadeIn
+         text-gray-900 dark:text-white;
+}
+
+.services-list {
+  @apply font-poppins font-light space-y-2
+         text-gray-700 dark:text-gray-200;
+}
 
 
 
