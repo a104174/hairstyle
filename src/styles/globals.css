@@ -21,7 +21,7 @@
   @apply relative inline-flex items-center justify-center
          px-4 py-1.5 rounded-md font-medium
          transition-all duration-300
-         text-gray-700 dark:text-gray-200;          
+         text-gray-700 dark:text-gray-200;
 }
 
 .home-btn::before {
@@ -38,7 +38,7 @@
 }
 
 .home-btn:hover {
-  @apply text-white drop-shadow-md;
+  background: transparent;
 }
 
 .home-btn.active {
@@ -58,6 +58,38 @@
 .services-list {
   @apply font-poppins font-light space-y-2
          text-gray-700 dark:text-gray-200;
+}
+
+/* ---------- UNDERLINE ANIMADO NOS LINKS DO NAVBAR ---------- */
+.nav-link {
+  @apply relative inline-flex items-center justify-center
+         px-3 py-1 rounded-md text-sm font-medium      
+         transition-colors duration-200
+         text-gray-700 dark:text-gray-200;
+}
+
+/* linha invisível por defeito */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: black;  /* LINHA PRETA */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+/* ao passar o rato → linha cresce da esquerda p/ direita */
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* mantém a linha visível no link da página ativa */
+.nav-link.active::after {
+  transform: scaleX(1);
 }
 
 
